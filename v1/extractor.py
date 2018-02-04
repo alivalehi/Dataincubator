@@ -21,6 +21,8 @@ def extract_title(html_doc):
     whole_box = soup.find_all('div', class_='leftcolumn')
     for box in whole_box:
         title = box.find('h1', class_='title mathjax').text
+    if title is '':
+        print('empty title')    
     return title
 def extract_abstract(html_doc):
     soup = BeautifulSoup(html_doc,'lxml')
@@ -35,6 +37,8 @@ def extract_abstract(html_doc):
         unwanted = query.find('span')
         unwanted.extract()
         abstract = query.text.replace("\n", "")
+    if abstract is '':
+        print('empty abstract')    
     return abstract
 def extract_authors(html_doc):
     soup = BeautifulSoup(html_doc,'lxml')
@@ -50,6 +54,11 @@ def extract_authors(html_doc):
         for link in links:
             address.append(link['href'])
             name.append(link.text)
+
+    if not address:
+       print('empty adress') 
+    if not name:
+       print('empty name')     
     return address,name
 def extract_list_of_author_publications(html_doc):
     soup = BeautifulSoup(html_doc,'lxml')

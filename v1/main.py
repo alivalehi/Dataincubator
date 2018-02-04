@@ -17,12 +17,16 @@ for d in date_:
         	    break 
 	    titles.append(ex.extract_title(html_doc))
 	    abstracts.append(ex.extract_abstract(html_doc))
-	    authors.append(ex.extract_authors(html_doc))
+	    address, names = ex.extract_authors(html_doc)
+	    authors_n.append(name)
+	    authors_a.append(address)
 	se = pd.Series(titles)
 	se2 = pd.Series(abstracts)
-	se3 = pd.Series(authors)    
-	df = pd.DataFrame(columns=['title','abstracts','authors'])
+	se3 = pd.Series(authors_n)
+	se4 = pd.Series(authors_a)    
+	df = pd.DataFrame(columns=['title','abstracts','authors_n','authors_a'])
 	df['title'] = se.values
 	df['abstracts'] = se2.values
-	df['authors'] = se3.values
+	df['authors_n'] = se3.values
+	df['authors_a'] = se4.values
 	df.to_csv('/home/ec2-user/Dataincubator/v1'+str(d)+'.csv')
