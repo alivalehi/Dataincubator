@@ -12,6 +12,19 @@ def read_page(file_name):
     response = requests.get(file_name)#../pdfminer.six/results/output.html')
     html_doc = response.text
     return html_doc
+def extract_subject(html_doc):
+    soup = BeautifulSoup(html_doc,'lxml')
+    #class="leftcolumntitle mathjax"
+    #article = soup.
+ #   title = soup.find('div', class_='title mathjax') 
+    subject= ''
+    whole_box = soup.find_all('div', class_='leftcolumn')
+    box = whole_box[0]
+    div = box.find('div', class_='subheader')
+    subject = div.find('h1').text
+    if subject is '':
+        print('empty subject')    
+    return subject    
 def extract_title(html_doc):
     soup = BeautifulSoup(html_doc,'lxml')
     #class="leftcolumntitle mathjax"
