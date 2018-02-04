@@ -17,6 +17,7 @@ def extract_title(html_doc):
     #class="leftcolumntitle mathjax"
     #article = soup.
  #   title = soup.find('div', class_='title mathjax') 
+    title= ''
     whole_box = soup.find_all('div', class_='leftcolumn')
     for box in whole_box:
         title = box.find('h1', class_='title mathjax').text
@@ -27,6 +28,7 @@ def extract_abstract(html_doc):
     #article = soup.
  #   title = soup.find('div', class_='title mathjax') 
  #   print(soup)
+    abstract = ''
     whole_box = soup.find_all('div', class_='leftcolumn')
     for box in whole_box:
         query = box.find('blockquote', class_='abstract mathjax')
