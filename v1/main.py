@@ -21,7 +21,7 @@ for d in date_:
 	    titles.append(title)
 	    abstracts.append(ex.extract_abstract(html_doc))
 	    address, names = ex.extract_authors(html_doc)
-	    authors_n.append(name)
+	    authors_n.append(names)
 	    authors_a.append(address)
 	    print(name)
 	    if title is '':
